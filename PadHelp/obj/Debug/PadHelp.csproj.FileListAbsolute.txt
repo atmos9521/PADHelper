@@ -1,0 +1,10 @@
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\bin\Debug\PadHelp.exe.config
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\bin\Debug\PadHelp.exe
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\bin\Debug\PadHelp.pdb
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.csprojAssemblyReference.cache
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.Form1.resources
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.Properties.Resources.resources
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.csproj.GenerateResource.cache
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.csproj.CoreCompileInputs.cache
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.exe
+F:\MyProgram\Git\PadSystem\PadHelp\PadHelp\obj\Debug\PadHelp.pdb

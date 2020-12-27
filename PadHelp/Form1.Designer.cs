@@ -49,7 +49,6 @@
             this.HttpAddrs_txt.Name = "HttpAddrs_txt";
             this.HttpAddrs_txt.Size = new System.Drawing.Size(256, 25);
             this.HttpAddrs_txt.TabIndex = 1;
-            this.HttpAddrs_txt.Text = "https://pad.skyozora.com/pets/3161";
             // 
             // ShowMSG_txt
             // 

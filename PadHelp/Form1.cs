@@ -22,13 +22,22 @@ namespace PadHelp
 
         private async void Read_ClickAsync(object sender, EventArgs e)
         {
-            if (HttpAddrs_txt.Text != "")
+            if (HttpAddrs_txt.Text != "" && !HttpAddrs_txt.Text.Contains("https://pad.skyozora.com/pets/"))
+            {
+                string[] InputPadid = HttpAddrs_txt.Text.Split(',');
+                foreach (var item in InputPadid)
+                {
+                    //讀URL   HttpAddrs_txt.Text
+                    ReadHttpAsync(string.Format("https://pad.skyozora.com/pets/{0}", item));
+                }
+            }
+            else if (HttpAddrs_txt.Text != "" && HttpAddrs_txt.Text.Contains("https://pad.skyozora.com/pets/"))
             {
                 for (int i = 100; i <= 110; i++)
                 {
                     //讀URL   HttpAddrs_txt.Text
-                    ReadHttpAsync(string.Format("https://pad.skyozora.com/pets/{0}",i));
-                }                
+                    ReadHttpAsync(string.Format("https://pad.skyozora.com/pets/{0}", i));
+                }
             }
             else
             {
@@ -36,10 +45,11 @@ namespace PadHelp
             }
         }
 
-        async void ReadHttpAsync(string HttpString) {
+        async void ReadHttpAsync(string HttpString)
+        {
             try
             {
-                HttpClient httpClient = new HttpClient();                
+                HttpClient httpClient = new HttpClient();
                 var responseMessage = await httpClient.GetAsync(HttpString); //發送請求
 
                 //檢查回應的伺服器狀態StatusCode是否是200 OK
@@ -76,6 +86,15 @@ namespace PadHelp
                 result = string.Format("{0}\r\n{1}", ShowMSG_txt.Text, match.Groups[1]);
             }
             ShowMSG_txt.Text = result;
+
+            //寵物圖片:
+            pattern = @"[^No.]*(?<padid>.*)*[\s-$]";
+            pattern = @"[^No.]*\.(?<padid>[^\s]*)(?<blank>\s*)(.*)";
+            Regex regex2 = new Regex(pattern);
+            Match match2 = Regex.Match(result, pattern);
+            Console.WriteLine(match2.Groups["padid"].Value);
+            
+            //開頭: https://pad.skyozora.com/images/pets/編號.jpg
         }
     }
 }

@@ -31,6 +31,7 @@
             this.StartRead_btn = new System.Windows.Forms.Button();
             this.HttpAddrs_txt = new System.Windows.Forms.TextBox();
             this.ShowMSG_txt = new System.Windows.Forms.TextBox();
+            this.Test_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StartRead_btn
@@ -63,11 +64,22 @@
             this.ShowMSG_txt.Size = new System.Drawing.Size(334, 417);
             this.ShowMSG_txt.TabIndex = 2;
             // 
+            // Test_btn
+            // 
+            this.Test_btn.Location = new System.Drawing.Point(26, 371);
+            this.Test_btn.Name = "Test_btn";
+            this.Test_btn.Size = new System.Drawing.Size(137, 58);
+            this.Test_btn.TabIndex = 3;
+            this.Test_btn.Text = "Test_BTN";
+            this.Test_btn.UseVisualStyleBackColor = true;
+            this.Test_btn.Click += new System.EventHandler(this.Test_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 441);
+            this.Controls.Add(this.Test_btn);
             this.Controls.Add(this.ShowMSG_txt);
             this.Controls.Add(this.HttpAddrs_txt);
             this.Controls.Add(this.StartRead_btn);
@@ -83,6 +95,7 @@
         private System.Windows.Forms.Button StartRead_btn;
         private System.Windows.Forms.TextBox HttpAddrs_txt;
         private System.Windows.Forms.TextBox ShowMSG_txt;
+        private System.Windows.Forms.Button Test_btn;
     }
 }
 

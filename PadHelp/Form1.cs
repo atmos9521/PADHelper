@@ -170,20 +170,51 @@ namespace PadHelp
         private async void Awake_btn_ClickAsync(object sender, EventArgs e)
         {
             var responseResult = await ReadHttpAsync(@"https://pad.skyozora.com/skill/%E8%A6%BA%E9%86%92%E6%8A%80%E8%83%BD%E4%B8%80%E8%A6%BD/");
+            
 
-            string pattern = "(<td><a href=)(.*)(</td></tr><tr>)";
-            Regex regex = new Regex(pattern);
-            Match match = Regex.Match(responseResult, pattern);
-            var result = match.Groups;
-            Console.WriteLine(result.Count);
+            string [] patternArray = { "<td><a href=\"", "</td></tr><tr>" };
+            string[] results = responseResult.Split(patternArray,StringSplitOptions.None);
+            //Match match = Regex.Match(responseResult, pattern);
+            //string[] match = Regex.Split(responseResult, pattern);
+            //Regex regex = new Regex(pattern);
+            //var type = match.Groups[0];
+            string pattern = "skill\(?<padid>.*)(class=\\\"tooltip\\\" title=\\\")(.*)";
+            int count = 0;
+            foreach (var item in results)
+            {//@"[^No.]*(?<padid>.*)*[\s-$]";
+                Match match = Regex.Match(item, pattern);
+                if (count != 0)
+                {
+                    var testdeads = match.Groups;
+                }
+                count++;
+            }
         }
 
         private void Awake_btn_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
-                MessageBox.Show("最小化");
+                Console.WriteLine("最小化");
+                this.Hide();
             }
+            else if (this.WindowState == FormWindowState.Maximized)
+            {
+                Console.WriteLine("最大化");
+            }
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string item = "aaaassssdfe1561658fefeaaass58d";
+            string pattern = "(ssd).*(58f)";
+            Match match = Regex.Match(item, pattern);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace PadHelp
             {
                 for (int item = 6884; item <= 6890; item++)
                 {
-                    
+
                     //下載圖片
                     StartToDownPicture(item.ToString());
                 }
@@ -90,7 +90,6 @@ namespace PadHelp
             }
             ShowMSG_txt.Text = result;
 
-            //寵物圖片:
             pattern = @"[^No.]*(?<padid>.*)*[\s-$]";
             pattern = @"[^No.]*\.(?<padid>[^\s]*)(?<blank>\s*)(.*)";
             Regex regex2 = new Regex(pattern);
@@ -132,9 +131,59 @@ namespace PadHelp
 
         }
 
-        private void Test_btn_Click(object sender, EventArgs e)
+        private async void Test_btn_ClickAsync(object sender, EventArgs e)
         {
-            StartToDownPicture("https://pad.skyozora.com/images/pets/6539.png");
+            var responseResult = await ReadHttpAsync(string.Format("https://pad.skyozora.com/pets/{0}", 3161));
+            //id + 日文名稱
+            string pattern = "<h3 style=\"font-size:13px;line-height:14px; margin-top:2px\">(.*)</h3>";
+            Regex regex = new Regex(pattern);
+            Match match = Regex.Match(responseResult, pattern);
+            string result = match.Groups[1].ToString();
+
+            //中文名稱
+            pattern = "<h2 style=\"font-size:20px; line-height:20px; margin-top: 2px; margin-bottom:7px\">(.*)</h2>";
+            match = Regex.Match(responseResult, pattern);
+            var name = match.Groups[1];
+
+            //星數
+            pattern = @"★(.*)★";
+            match = Regex.Match(responseResult, pattern);
+            var start = match.Groups[0];
+
+            //type
+            pattern = @"★(.*)★";
+            match = Regex.Match(responseResult, pattern);
+            var type = match.Groups[0];
+
+            //顯示用
+            //if (ShowMSG_txt.Text != "")
+            //{
+            //    result = string.Format("{0}\r\n{1}", ShowMSG_txt.Text, match.Groups[1]);
+            //    pattern = @"[^No.]*(?<padid>.*)*[\s-$]";
+            //    pattern = @"[^No.]*\.(?<padid>[^\s]*)(?<blank>\s*)(.*)";
+            //}
+            ShowMSG_txt.Text = string.Format("中文name: {0}\r\n" +
+                                             "star: {1}"
+                                             , name, start);
+        }
+
+        private async void Awake_btn_ClickAsync(object sender, EventArgs e)
+        {
+            var responseResult = await ReadHttpAsync(@"https://pad.skyozora.com/skill/%E8%A6%BA%E9%86%92%E6%8A%80%E8%83%BD%E4%B8%80%E8%A6%BD/");
+
+            string pattern = "(<td><a href=)(.*)(</td></tr><tr>)";
+            Regex regex = new Regex(pattern);
+            Match match = Regex.Match(responseResult, pattern);
+            var result = match.Groups;
+            Console.WriteLine(result.Count);
+        }
+
+        private void Awake_btn_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                MessageBox.Show("最小化");
+            }
         }
     }
 }

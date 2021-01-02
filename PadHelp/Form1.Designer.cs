@@ -32,6 +32,7 @@
             this.HttpAddrs_txt = new System.Windows.Forms.TextBox();
             this.ShowMSG_txt = new System.Windows.Forms.TextBox();
             this.Test_btn = new System.Windows.Forms.Button();
+            this.Awake_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StartRead_btn
@@ -66,19 +67,31 @@
             // 
             // Test_btn
             // 
-            this.Test_btn.Location = new System.Drawing.Point(26, 371);
+            this.Test_btn.Location = new System.Drawing.Point(26, 222);
             this.Test_btn.Name = "Test_btn";
             this.Test_btn.Size = new System.Drawing.Size(137, 58);
             this.Test_btn.TabIndex = 3;
             this.Test_btn.Text = "Test_BTN";
             this.Test_btn.UseVisualStyleBackColor = true;
-            this.Test_btn.Click += new System.EventHandler(this.Test_btn_Click);
+            this.Test_btn.Click += new System.EventHandler(this.Test_btn_ClickAsync);
+            // 
+            // Awake_btn
+            // 
+            this.Awake_btn.Location = new System.Drawing.Point(26, 319);
+            this.Awake_btn.Name = "Awake_btn";
+            this.Awake_btn.Size = new System.Drawing.Size(137, 58);
+            this.Awake_btn.TabIndex = 4;
+            this.Awake_btn.Text = "覺醒資料下載";
+            this.Awake_btn.UseVisualStyleBackColor = true;
+            this.Awake_btn.Click += new System.EventHandler(this.Awake_btn_ClickAsync);
+            this.Awake_btn.Resize += new System.EventHandler(this.Awake_btn_Resize);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 441);
+            this.Controls.Add(this.Awake_btn);
             this.Controls.Add(this.Test_btn);
             this.Controls.Add(this.ShowMSG_txt);
             this.Controls.Add(this.HttpAddrs_txt);
@@ -96,6 +109,7 @@
         private System.Windows.Forms.TextBox HttpAddrs_txt;
         private System.Windows.Forms.TextBox ShowMSG_txt;
         private System.Windows.Forms.Button Test_btn;
+        private System.Windows.Forms.Button Awake_btn;
     }
 }
 

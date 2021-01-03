@@ -178,16 +178,20 @@ namespace PadHelp
             //string[] match = Regex.Split(responseResult, pattern);
             //Regex regex = new Regex(pattern);
             //var type = match.Groups[0];
-            string pattern = "skill\(?<padid>.*)(class=\\\"tooltip\\\" title=\\\")(.*)";
-            int count = 0;
+            string pattern = "skill\\(?<padid>.*)(class=\\\"tooltip\\\" title=\\\")(.*)";
+            pattern = "skill/(?<padid>.*)\\\" class=.* " +
+                      "title=\\\"(?<padskill>.*)\"><img src=.*";
+            int count = 1;
             foreach (var item in results)
-            {//@"[^No.]*(?<padid>.*)*[\s-$]";
+            {
                 Match match = Regex.Match(item, pattern);
-                if (count != 0)
+                if (match.Groups.Count != 1)
                 {
-                    var testdeads = match.Groups;
+                    Console.WriteLine("------------"+count+"--------------");
+                    Console.WriteLine(match.Groups["padid"].Value);
+                    Console.WriteLine(match.Groups["padskill"].Value);
+                    count++;
                 }
-                count++;
             }
         }
 
@@ -213,8 +217,9 @@ namespace PadHelp
         private void button1_Click(object sender, EventArgs e)
         {
             string item = "aaaassssdfe1561658fefeaaass58d";
-            string pattern = "(ssd).*(58f)";
+            string pattern = "ssd(?<test>.*)e156";
             Match match = Regex.Match(item, pattern);
+            Console.WriteLine(match.Groups["test"].Value);
         }
     }
 }

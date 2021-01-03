@@ -9,7 +9,7 @@ namespace PadHelp.DataMap
     public class PadMsg
     {
         public int Padid { get; set; }
-        public int Padname { get; set; }
-        public int PadProperty { get; set; }
+        public string Padname { get; set; }
+        public string PadProperty { get; set; }
     }
 }

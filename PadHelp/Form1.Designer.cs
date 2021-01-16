@@ -81,7 +81,7 @@
             // 
             // Awake_btn
             // 
-            this.Awake_btn.Location = new System.Drawing.Point(26, 319);
+            this.Awake_btn.Location = new System.Drawing.Point(26, 286);
             this.Awake_btn.Name = "Awake_btn";
             this.Awake_btn.Size = new System.Drawing.Size(137, 58);
             this.Awake_btn.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(192, 319);
+            this.button1.Location = new System.Drawing.Point(204, 222);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 58);
             this.button1.TabIndex = 5;

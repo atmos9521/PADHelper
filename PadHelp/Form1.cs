@@ -171,16 +171,12 @@ namespace PadHelp
         {
             var responseResult = await ReadHttpAsync(@"https://pad.skyozora.com/skill/%E8%A6%BA%E9%86%92%E6%8A%80%E8%83%BD%E4%B8%80%E8%A6%BD/");
             
-
             string [] patternArray = { "<td><a href=\"", "</td></tr><tr>" };
             string[] results = responseResult.Split(patternArray,StringSplitOptions.None);
-            //Match match = Regex.Match(responseResult, pattern);
-            //string[] match = Regex.Split(responseResult, pattern);
-            //Regex regex = new Regex(pattern);
-            //var type = match.Groups[0];
-            string pattern = "skill\\(?<padid>.*)(class=\\\"tooltip\\\" title=\\\")(.*)";
-            pattern = "skill/(?<padid>.*)\\\" class=.* " +
-                      "title=\\\"(?<padskill>.*)\"><img src=.*";
+            string pattern = "skill/(?<skillpath>.*)\\\" class=\\\"" +
+                             "tooltip\\\" title=\\\"(?<skillid>.*)\\\">" +
+                             "<img src=\\\"(?<skillpic>.*)\\\"></a></td>.*</a></td><td>" +
+                             "(?<skilleffect>.*)";
             int count = 1;
             foreach (var item in results)
             {
@@ -188,8 +184,9 @@ namespace PadHelp
                 if (match.Groups.Count != 1)
                 {
                     Console.WriteLine("------------"+count+"--------------");
-                    Console.WriteLine(match.Groups["padid"].Value);
-                    Console.WriteLine(match.Groups["padskill"].Value);
+                    Console.WriteLine(match.Groups["skillpath"].Value);
+                    Console.WriteLine(match.Groups["skillpic"].Value);//https://pad.skyozora.com/
+                    Console.WriteLine(match.Groups["skilleffect"].Value);
                     count++;
                 }
             }
